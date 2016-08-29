@@ -9,5 +9,5 @@ public class Settings {
     public static int intervalPickChange;
     public static boolean showAll;
     public static boolean orderPickChange;
-    public static int animationPickChange;
+    public static boolean animationPickChange;
 }

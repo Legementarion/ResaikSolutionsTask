@@ -35,7 +35,7 @@
 
         <TextView
             android:text="@string/image_change_interval"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/textView"
             android:layout_weight="1"
@@ -52,14 +52,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/paramSwitch2"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textOn="@string/all"
+        android:textOff="@string/only_favourites" />
 
     <Switch
         android:text="@string/show_on_the_serial_number_accident"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/paramSwitch3"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textOn="@string/serial_number"
+        android:textOff="@string/accident" />
 
     <Switch
         android:text="@string/switching_types_of_animations"
