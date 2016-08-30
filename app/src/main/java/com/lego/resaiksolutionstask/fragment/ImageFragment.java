@@ -53,7 +53,6 @@ public class ImageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mAddFavorite = new FavoriteDialog(getContext());
-//                mAddFavorite.show();
                 mAddFavorite.show(mSectionsPagerAdapter.getmCurrentPosition());
             }
         });

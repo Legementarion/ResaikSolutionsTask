@@ -17,6 +17,9 @@ import com.lego.resaiksolutionstask.utils.Settings;
 
 public class SettingsFragment extends Fragment {
 
+    private Switch changePic,showAll,randPic,animPic;
+    private NumberPicker numberPicker;
+
     public SettingsFragment() {
     }
 
@@ -35,19 +38,17 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        Switch changePic = (Switch) view.findViewById(R.id.paramSwitch1);
+        changePic = (Switch) view.findViewById(R.id.paramSwitch1);
         changePic.setOnCheckedChangeListener(mySwitch);
-        Switch showAll = (Switch) view.findViewById(R.id.paramSwitch2);
+        showAll = (Switch) view.findViewById(R.id.paramSwitch2);
         showAll.setOnCheckedChangeListener(mySwitch);
-        Switch randPic = (Switch) view.findViewById(R.id.paramSwitch3);
+        randPic = (Switch) view.findViewById(R.id.paramSwitch3);
         randPic.setOnCheckedChangeListener(mySwitch);
-        Switch animPic = (Switch) view.findViewById(R.id.paramSwitch4);
+        animPic = (Switch) view.findViewById(R.id.paramSwitch4);
         animPic.setOnCheckedChangeListener(mySwitch);
+        numberPicker = (NumberPicker) view.findViewById(R.id.numberPicker);
 
-        NumberPicker numberPicker = (NumberPicker) view.findViewById(R.id.numberPicker);
-        numberPicker.setMaxValue(9);
-        numberPicker.setMinValue(1);
-        numberPicker.setValue(1);
+        defaultSettings();
         return view;
     }
 
@@ -70,6 +71,18 @@ public class SettingsFragment extends Fragment {
             }
         }
     };
+
+    private void defaultSettings(){
+        numberPicker.setMaxValue(9);
+        numberPicker.setMinValue(1);
+        numberPicker.setValue(1);
+        Settings.intervalPickChange = numberPicker.getValue();
+
+        Settings.autoPickChange = changePic.isChecked();
+        Settings.showAll = showAll.isChecked();
+        Settings.orderPickChange = randPic.isChecked();
+        Settings.animationPickChange = animPic.isChecked();
+    }
 
     @Override
     public void onAttach(Context context) {
