@@ -3,6 +3,7 @@ package com.lego.resaiksolutionstask.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 
 import com.lego.resaiksolutionstask.R;
 import com.lego.resaiksolutionstask.adapter.SectionsPagerAdapter;
+import com.lego.resaiksolutionstask.utils.Settings;
 
 
 public class ImageFragment extends Fragment {
@@ -57,6 +59,16 @@ public class ImageFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (Settings.autoPickChange){
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    mSectionsPagerAdapter.nextItem();
+                }
+            }, Settings.intervalPickChange*1000);
+
+        }
     }
 
     @Override

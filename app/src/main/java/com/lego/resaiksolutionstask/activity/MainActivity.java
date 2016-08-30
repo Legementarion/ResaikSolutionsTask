@@ -1,5 +1,6 @@
 package com.lego.resaiksolutionstask.activity;
 
+import android.content.res.AssetManager;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,14 +11,18 @@ import android.support.v7.widget.Toolbar;
 
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.lego.resaiksolutionstask.R;
+import com.lego.resaiksolutionstask.controller.JsonController;
 import com.lego.resaiksolutionstask.fragment.ImageFragment;
 import com.lego.resaiksolutionstask.fragment.SettingsFragment;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        JsonController jsonController = JsonController.getInstance();
+            AssetManager assets = this.getAssets();
+            jsonController.init(assets);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

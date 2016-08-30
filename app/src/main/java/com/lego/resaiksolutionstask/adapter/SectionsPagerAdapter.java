@@ -15,9 +15,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
     }
+    private int mCurrentPosition;
 
     @Override
     public Fragment getItem(int position) {
+        mCurrentPosition = position;
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         return PlaceholderFragment.newInstance(position + 1);
@@ -40,5 +42,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "SECTION 3";
         }
         return null;
+    }
+
+    public void nextItem(){
+        if (mCurrentPosition == getCount()-1){
+            getItem(0);
+        }else {
+            getItem(mCurrentPosition + 1);
+        }
     }
 }
