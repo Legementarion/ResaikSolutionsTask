@@ -12,4 +12,9 @@
     <string name="serial_number">serial number</string>
     <string name="all">all</string>
     <string name="only_favourites">favourites</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="comment">Comment…</string>
+    <string name="Remove_from_favorite">Remove from favorite?</string>
+    <string name="Please_Enter_your_Comment">Please Enter your Comment</string>
 </resources>

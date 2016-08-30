@@ -46,7 +46,7 @@ public class SettingsFragment extends Fragment {
 
         NumberPicker numberPicker = (NumberPicker) view.findViewById(R.id.numberPicker);
         numberPicker.setMaxValue(9);
-        numberPicker.setMinValue(0);
+        numberPicker.setMinValue(1);
         numberPicker.setValue(1);
         return view;
     }

@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 
 import com.lego.resaiksolutionstask.R;
 import com.lego.resaiksolutionstask.adapter.SectionsPagerAdapter;
+import com.lego.resaiksolutionstask.dialog.FavoriteDialog;
 import com.lego.resaiksolutionstask.utils.Settings;
 
 
@@ -22,6 +23,7 @@ public class ImageFragment extends Fragment {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private FavoriteDialog mAddFavorite;
 
     public ImageFragment() {
         // Required empty public constructor
@@ -45,12 +47,14 @@ public class ImageFragment extends Fragment {
         mViewPager = (ViewPager) view.findViewById(R.id.tabContainer);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                mAddFavorite = new FavoriteDialog(getContext());
+//                mAddFavorite.show();
+                mAddFavorite.show(mSectionsPagerAdapter.getmCurrentPosition());
             }
         });
         return view;

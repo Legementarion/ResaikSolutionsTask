@@ -37,7 +37,6 @@ public class JsonController {
             JSONArray m_jArry = obj.getJSONArray("images");
             for (int i = 0; i < m_jArry.length(); i++) {
                 JSONObject jo_inside = m_jArry.getJSONObject(i);
-                Log.d("JSON", "init: "+jo_inside.getString("picture"));
                 ImageModel imageModel = new ImageModel(Integer.valueOf(jo_inside.getString("_id")),
                         jo_inside.getString("picture"),
                         jo_inside.getString("comment"),
