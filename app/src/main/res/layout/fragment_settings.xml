@@ -62,7 +62,7 @@
         android:layout_height="match_parent"
         android:id="@+id/paramSwitch3"
         android:layout_weight="1"
-        android:textOn="@string/serial_number"
+        android:textOn="@string/random"
         android:textOff="@string/accident" />
 
     <Switch

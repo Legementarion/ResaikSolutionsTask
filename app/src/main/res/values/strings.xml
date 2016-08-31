@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Resaik Solutions Task</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
     <string name="automatic_change_pictures">Automatic change pictures</string>
     <string name="show_all_only_favourites">show </string>
     <string name="show_on_the_serial_number_accident">show on the </string>
@@ -9,7 +8,7 @@
     <string name="image_change_interval">Image change interval</string>
     <string name="doubleClick_backBtn">Press again to exit</string>
     <string name="accident">accident</string>
-    <string name="serial_number">serial number</string>
+    <string name="random">random</string>
     <string name="all">all</string>
     <string name="only_favourites">favourites</string>
     <string name="submit">Submit</string>

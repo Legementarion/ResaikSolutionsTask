@@ -47,7 +47,12 @@ public class SettingsFragment extends Fragment {
         animPic = (Switch) view.findViewById(R.id.paramSwitch4);
         animPic.setOnCheckedChangeListener(mySwitch);
         numberPicker = (NumberPicker) view.findViewById(R.id.numberPicker);
-
+        numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                Settings.intervalPickChange = newVal;
+            }
+        });
         defaultSettings();
         return view;
     }
@@ -75,7 +80,7 @@ public class SettingsFragment extends Fragment {
     private void defaultSettings(){
         numberPicker.setMaxValue(9);
         numberPicker.setMinValue(1);
-        numberPicker.setValue(1);
+        numberPicker.setValue(Settings.intervalPickChange);
         Settings.intervalPickChange = numberPicker.getValue();
 
         Settings.autoPickChange = changePic.isChecked();

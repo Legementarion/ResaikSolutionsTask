@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.lego.resaiksolutionstask.R;
 import com.lego.resaiksolutionstask.controller.JsonController;
+import com.lego.resaiksolutionstask.utils.Settings;
 
 /**
  * @author Lego on 30.08.2016.
@@ -45,17 +46,17 @@ public class FavoriteDialog extends Dialog {
 
     public void show(int g) {
         super.show();
-        Log.d("WORK", "show: "+g);
+        Log.d("WORK", "show: " + g);
         mCurrentPage = g;
     }
 
     private void initUi() {
         mEditText = (EditText) findViewById(R.id.dialog_comment);
         mText = (TextView) findViewById(R.id.textDialog);
-        if (mJsonController.getmImages().get(mCurrentPage).isFavorite()){
+        if (mJsonController.getmImages().get(mCurrentPage).isFavorite()) {
             mEditText.setVisibility(View.GONE);
             mText.setText(R.string.Remove_from_favorite);
-        }else {
+        } else {
             mText.setText(R.string.Please_Enter_your_Comment);
             mEditText.setVisibility(View.VISIBLE);
         }
@@ -68,15 +69,16 @@ public class FavoriteDialog extends Dialog {
     private View.OnClickListener myOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.btn_ok:
-                    if (mJsonController.getmImages().get(mCurrentPage).isFavorite()){
+                    if (mJsonController.getmImages().get(mCurrentPage).isFavorite()) {
                         mJsonController.getmImages().get(mCurrentPage).setFavorite(false);
                         mJsonController.getmImages().get(mCurrentPage).setComment("");
-                    }else {
+                    } else {
                         mJsonController.getmImages().get(mCurrentPage).setFavorite(true);
                         mJsonController.getmImages().get(mCurrentPage).setComment(mEditText.getText().toString());
                     }
+                    Settings.reDraw = true;
                     dismiss();
                     break;
                 case R.id.btn_cancel:
