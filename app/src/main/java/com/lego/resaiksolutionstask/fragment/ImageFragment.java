@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,12 @@ import com.lego.resaiksolutionstask.controller.JsonController;
 import com.lego.resaiksolutionstask.dialog.FavoriteDialog;
 import com.lego.resaiksolutionstask.model.ImageModel;
 import com.lego.resaiksolutionstask.utils.Settings;
+import com.lego.resaiksolutionstask.utils.UpdateImage;
 
 import java.util.Random;
 
 
-public class ImageFragment extends Fragment {
+public class ImageFragment extends Fragment{
 
     private FavoriteDialog mAddFavorite;
     private SliderLayout sliderShow;
@@ -59,7 +61,12 @@ public class ImageFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAddFavorite = new FavoriteDialog(getContext());
+                mAddFavorite = new FavoriteDialog(getContext(), new UpdateImage() {
+                    @Override
+                    public void updateImage() {
+                        initImages();
+                    }
+                });
                 sliderShow.getCurrentPosition();
                 mAddFavorite.show(mJsonController.getmImages().indexOfValue(getmImageModels()[sliderShow.getCurrentPosition()]));
             }
@@ -68,6 +75,7 @@ public class ImageFragment extends Fragment {
     }
 
     private void initImages() {
+        sliderShow.removeAllSliders();
         SparseArray<ImageModel> Images = mJsonController.getmImages();
         setmImageModels(new ImageModel[Images.size()]);
 
@@ -84,7 +92,7 @@ public class ImageFragment extends Fragment {
         for (int i = 0; i < Images.size(); i++) {
             TextSliderView textSliderView = new TextSliderView(getContext());
             textSliderView
-                    .description(getmImageModels()[i].getComment() + i)
+                    .description(getmImageModels()[i].getComment())
                     .image(getmImageModels()[i].getUrl());
             if (Settings.showAll) {
                 if (getmImageModels()[i].isFavorite()) {

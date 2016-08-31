@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.lego.resaiksolutionstask.R;
 import com.lego.resaiksolutionstask.controller.JsonController;
 import com.lego.resaiksolutionstask.utils.Settings;
+import com.lego.resaiksolutionstask.utils.UpdateImage;
 
 /**
  * @author Lego on 30.08.2016.
@@ -21,6 +22,7 @@ import com.lego.resaiksolutionstask.utils.Settings;
 
 public class FavoriteDialog extends Dialog {
 
+    private UpdateImage updateImage;
     private Context mContext;
     private JsonController mJsonController;
 
@@ -30,9 +32,10 @@ public class FavoriteDialog extends Dialog {
 
     private int mCurrentPage;
 
-    public FavoriteDialog(Context mContext) {
+    public FavoriteDialog(Context mContext, UpdateImage updateImage) {
         super(mContext);
         this.mContext = mContext;
+        this.updateImage = updateImage;
     }
 
     @Override
@@ -78,6 +81,7 @@ public class FavoriteDialog extends Dialog {
                         mJsonController.getmImages().get(mCurrentPage).setFavorite(true);
                         mJsonController.getmImages().get(mCurrentPage).setComment(mEditText.getText().toString());
                     }
+                    updateImage.updateImage();
                     Settings.reDraw = true;
                     dismiss();
                     break;

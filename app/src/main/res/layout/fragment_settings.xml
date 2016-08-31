@@ -53,8 +53,8 @@
         android:layout_height="match_parent"
         android:id="@+id/paramSwitch2"
         android:layout_weight="1"
-        android:textOn="@string/all"
-        android:textOff="@string/only_favourites" />
+        android:textOn="@string/only_favourites"
+        android:textOff="@string/all" />
 
     <Switch
         android:text="@string/show_on_the_serial_number_accident"
